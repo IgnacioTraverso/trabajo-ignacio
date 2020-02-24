@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario inscripción</title>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+	body {
+        color: #566787;
+		background: #f5f5f5;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 13px;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {        
+		padding-bottom: 15px;
+		background: #435d7d;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+ 	h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+	.menu{
+		text-align: right;
+	}
+	h5{
+		color: tomato;
+	}
+	
+</style>
+</head>
+<body>
+	<div class="container">
+	
+	 <div class="table-wrapper">
+	 		
+		  <div class="table-title">
+		  
+		    <div class="row">
+			    <div >
+					<h2>Apuntar Ciclistas</h2>
+				</div>
+				
+			</div>
+			
+		</div>
+		<div class="menu">
+						<a class="btn btn-danger" th:href="@{/practica/login?logout}">Desconectarse</a>
+						<a class="btn btn-info" th:href="@{/}">Volver</a>
+				</div>
+	<form class="form-group" action="#" th:action="@{/practica/addLlevar}" th:object="${llevar}" method="post">
+		
+		<input type="hidden" th:field="*{id}"/>
+		
+		<p>NEtapa:
+		<select class="form-control" name="etapa">
+			<option th:each="etapa : ${etapas}" th:value="${etapa.netapa}" th:text="${etapa.netapa}"></option>
+		</select>
+		</p>
+		<p>Nombre
+		<select class="form-control" name="nombre">
+			<option th:each="ciclista : ${ciclistas}" th:value="${ciclista.nombre}" th:text="${ciclista.nombre}"></option>
+		</select>
+		</p>
+		<p>Maillot
+		<select class="form-control" name="maillot">
+			<option th:each="maillot : ${maillots}" th:value="${maillot.codigo}" th:text="${maillot.codigo}"></option>
+		</select>
+		</p>
+		<p> <input  class="btn btn-success  btn-lg btn-block" type="submit" value="submit"> </p>
+		
+		<h5 class="errores" th:if="${error==1}">El ciclista ya está inscrito en esta carrera</h5>
+	</form>
+</div>
+</div>
+</body>
+</html>

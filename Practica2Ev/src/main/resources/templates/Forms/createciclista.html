@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Form ciclistas</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+</head>
+<style>
+	body {
+        color: #566787;
+		background: #f5f5f5;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 13px;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {        
+		padding-bottom: 15px;
+		background: #435d7d;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+ 	h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+	.menu{
+		text-align: right;
+	}
+	h5{
+		color: tomato;
+	}
+	
+</style>
+<body>
+<div class="container">
+	 <div class="table-wrapper">
+		  <div class="table-title">
+		    <div class="row">
+			    <div class="col-sm-6">
+					<h2>Creacion y actualizacion de Ciclistas</h2>
+				</div>
+				<div class="menu">
+						<a class="btn btn-danger" th:href="@{/practica/login?logout}">Desconectarse</a>
+						<a class="btn btn-info" th:href="@{/practica/ciclistas}">Volver</a>
+				</div>
+			</div>
+		</div>
+		<form class="form-group" action="#" th:action="@{/practica/addCiclista}" th:object="${ciclista}" method="post" enctype="multipart/form-data">
+		
+		<input type="hidden" th:field="*{id}"/>
+		
+		<p>Nombre: <input class="form-control" type="text" th:field="*{nombre}" th:value="${nombre}"/> </p>
+		<h5 class="errores" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Nombre ciclista error</h5>
+	
+		<p>Dorsal: <input class="form-control" type="number" th:field="*{dorsal}" th:value="${dorsal}"/> </p>
+		<h5 class="errores" th:if="${#fields.hasErrors('dorsal')}" th:errors="*{dorsal}">Dorsal error</h5>
+		
+		<p>Edad: <input class="form-control" type="number" th:field="*{edad}" th:value="${edad}"/> </p>
+		<h5 class="errores" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}">Edad error</h5>
+		
+		<p> Equipo
+		<select class="form-control"  name="nombre">
+			<option th:each="equipo : ${equipos}" th:value="${equipo.nomeq}" th:text="${equipo.nomeq}"></option>
+		</select>
+		</p>
+
+		<p> Foto <input class="form-control" type="file" name="imagen"/></p>
+
+		
+		<p> <input  class="btn btn-success  btn-lg btn-block" type="submit" value="submit"> </p>
+	</form>
+	</div>
+</div>
+
+</body>
+</html>
+
+	
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+	body {
+        color: #566787;
+		background: #f5f5f5;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 13px;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {        
+		padding-bottom: 15px;
+		background: #435d7d;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+ 	h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+	.menu{
+		text-align: right;
+	}
+	h5{
+		color: tomato;
+	}
+	
+</style>
+<body>
+<div class="container">
+	 <div class="table-wrapper">
+		  <div class="table-title">
+		    <div class="row">
+			    <div class="col-sm-6">
+					<h2>Creacion de Puertos</h2>
+				</div>
+				<div class="menu">
+						<a class="btn btn-danger" th:href="@{/practica/login?logout}">Desconectarse</a>
+						<a class="btn btn-info" th:href="@{/practica/maillots}">Volver</a>
+				</div>
+			</div>
+		</div>
+		
+		<form action="#" th:action="@{/practica/addPuerto}" th:object="${puerto}" method="post">
+		
+		<p>Nompuerto: <input class="form-control" type="text" th:field="*{nompuerto}" th:value="${nompuerto}"/> </p>
+		<h4 class="errores" th:if="${#fields.hasErrors('nompuerto')}" th:errors="*{nompuerto}">Nompuerto error</h4>
+		
+		<p>Altura: <input class="form-control" type="number" th:field="*{altura}" th:value="*{altura}"/> </p>
+		<h4 class="errores" th:if="${#fields.hasErrors('altura')}" th:errors="*{altura}">Altura error</h4>
+	
+		<p>Categoria: <input class="form-control" type="text" th:field="*{categoria}" th:value="*{categoria}"/> </p>
+		<h4 class="errores" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">Categoria error</h4>
+		
+		<p>Pendiente: <input class="form-control" type="number" th:field="*{pendiente}" th:value="*{pendiente}"/> </p>
+		<h4 class="errores" th:if="${#fields.hasErrors('pendiente')}" th:errors="*{pendiente}">Pendiente error</h4>
+		
+		<p>Netapa:
+		<select class="form-control" name="etapa">
+			<option th:each="etapa : ${etapas}" th:value="${etapa.netapa}" th:text="${etapa.netapa}"></option>
+		</select>
+		</p>
+		
+		<p>Dorsal:
+		<select class="form-control" name="nombre">
+			<option th:each="ciclista : ${ciclistas}" th:value="${ciclista.nombre}" th:text="${ciclista.nombre}"></option>
+		</select>
+		</p>
+		
+		<p> <input  class="btn btn-success  btn-lg btn-block" type="submit" value="submit"> </p>
+		
+	</form>
+	</div>
+</div>
+
+</body>
+</html>
+	

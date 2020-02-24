@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<meta charset="utf-8">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+	body {
+		color: #566787;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 13px;
+  		background-repeat: no-repeat;
+  		background-attachment: fixed; 
+  		background-size: 100% 100%;
+  		height: 500px;
+
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 5% 30%;
+		border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {        
+		padding-bottom: 15px;
+		background: #435d7d;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+		display: flex;
+   		justify-content: center;
+   		align-items: center;
+    }
+ 	h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+	.foot {
+		position: fixed;
+		bottom: 0;
+		color: black;
+	}
+  </style>
+</head>
+<body>
+<div class="container">
+	 <div class="table-wrapper">
+		  <div class="table-title">
+		    <div class="row">
+			    <div class="col-6">
+					<h2>Iniciar Sesion</h2>
+				</div>
+			</div>
+		</div>
+	<form class="form-group" action="#" th:action="@{/logincheck}" method="POST">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		
+		<p>Username
+		<input type="text"  class="form-control" placeholder="Username" name="username" id="Username" />
+		</p>
+		<p>Password
+		<input type="password"  class="form-control" placeholder="Password" name="password" id="password" />
+		</p>
+		<input class="btn btn-success btn-block" type="submit" value="Iniciar">
+		<a class="btn btn-info btn-block" th:href="@{/practica/registro}">Registro</a>
+		
+		<div th:if="${error!=null}" class="alert alert-dander" role="alert"> Invalid username or password</div>
+		<div th:if="${logout!=null}" class="alert alert-dander" role="alert"> logout successfully</div>
+	</form>
+	
+	</div>
+<footer class="foot">
+  <h3>By: Ignacio Traverso Baturone</h3>
+</footer>
+</div>
+</body>
+</html>

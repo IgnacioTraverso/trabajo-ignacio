@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario Maillot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+	body {
+        color: #566787;
+		background: #f1f1f1;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 13px;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {        
+		padding-bottom: 15px;
+		background: #435d7d;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+ 	h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+	.menu{
+		text-align: right;
+	}
+	h5{
+		color: tomato;
+	}
+	
+</style>
+<body>
+<div class="container">
+	 <div class="table-wrapper">
+		  <div class="table-title">
+		    <div class="row">
+			    <div class="col-sm-6">
+					<h2>Creacion de Maillots</h2>
+				</div>
+				<div class="menu">
+						<a class="btn btn-danger" th:href="@{/practica/login?logout}">Desconectarse</a>
+						<a class="btn btn-info" th:href="@{/practica/maillots}">Volver</a>
+				</div>
+			</div>
+		</div>
+		<form class="form-group" action="#" th:action="@{/practica/addMaillot}" th:object="${maillot}" method="post">
+			
+			<p>Codigo: <input class="form-control" type="text" th:field="*{codigo}"  th:value="*{codigo}" /> </p>
+			<h5 th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}">Codigo error</h5>
+	
+			<p>Tipo: <input class="form-control" type="text" th:field="*{tipo}"  th:value="*{tipo}" /> </p>
+			<h5 th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Tipo error</h5>
+			
+			<p>Color: <input class="form-control" type="text" th:field="*{color}"  th:value="*{color}" /> </p>
+			<h5 th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color error</h5>
+			
+			<p>Premio: <input class="form-control" type="number" th:field="*{premio}"  th:value="*{premio}" /> </p>
+			<h5 th:if="${#fields.hasErrors('premio')}" th:errors="*{premio}">Premio error</h5>
+	
+			<input class="btn btn-success btn-block" type="submit" value="Enviar"/>
+			
+		</form>
+	</div>
+</div>
+</body>
+</html>

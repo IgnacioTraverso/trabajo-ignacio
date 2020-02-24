@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Inicio</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/styles.css">
+		
+</head>
+<body>
+<div class="container">
+	 <div class="table-wrapper">
+		  <div class="table-title">
+		    <div class="row">
+			    <div class="col-sm-6">
+					<h2>Bienvenido</h2>
+				</div>
+				
+			</div>
+		</div>
+	<form  sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EQUIPO') or hasRole('ROLE_CICLISTA')" class="form-group" action="#" th:action="@{/practica/ciclistas}" >
+					<input class="btn btn-success  btn-lg btn-block" type="submit" name="Ciclista" value="Ciclista">
+	</form>
+	<form sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EQUIPO')" class="form-group" action="#" th:action="@{/practica/equipos}">
+					<input class="btn btn-success  btn-lg btn-block" type="submit" name="Equipo" value="Equipo">
+	</form>
+	
+	<form sec:authorize="hasRole('ROLE_ADMIN')" class="form-group" action="#" th:action="@{/practica/etapas}" >
+					<input class="btn btn-success  btn-lg btn-block" type="submit" name="Etapa" value="Etapa">
+	</form>
+	
+	<form sec:authorize="hasRole('ROLE_ADMIN')" class="form-group" action="#" th:action="@{/practica/maillots}" >
+					<input class="btn btn-success  btn-lg btn-block" type="submit" name="Maillot" value="Maillot">
+	</form>
+	
+	<form sec:authorize="hasRole('ROLE_ADMIN')" class="form-group" action="#" th:action="@{/practica/puertos}" >
+					<input class="btn btn-success  btn-lg btn-block" type="submit" name="Puerto" value="Puerto">
+	</form>
+	<form sec:authorize="hasRole('ROLE_ADMIN')" class="form-group" action="#" th:action="@{/practica/llevars}" >
+					<input class="btn btn-success  btn-lg btn-block" type="submit" name="Llevar" value="Apuntados">
+	</form>
+	
+	<div class="menu">
+						<a class="btn btn-danger" th:href="@{/practica/login?logout}">Desconectarse</a>	
+			</div>
+	
+
+</div>
+
+<footer class="foot">
+  <h3>By: Ignacio Traverso Baturone</h3>
+</footer>
+</div>
+</body>
+</html>
