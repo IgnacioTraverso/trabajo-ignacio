@@ -1,5 +1,7 @@
 package example.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,9 +15,6 @@ import example.service.UserRoleService;
 @Service("userRoleServiceImpl")
 public class UserRoleServiceImpl implements UserRoleService{
 
-	@Autowired
-	@Qualifier("userRoleJpaRepository")
-	private UserRoleJpaRepository userRoleJpaRepository;
 	
 	@Autowired
 	@Qualifier("dozer")
@@ -33,10 +32,20 @@ public class UserRoleServiceImpl implements UserRoleService{
 
 	}
 
+	@Autowired
+	@Qualifier("userRoleJpaRepository")
+	private UserRoleJpaRepository userJpaRepository;
+	
+	
 	@Override
-	public UserRole addUserRole(UserRoleModel userRoleModel) {
-		UserRole userRole=model2entity(userRoleModel);
-		return userRoleJpaRepository.save(userRole);
+	public List<UserRole> getListUsuarios() {
+		return null;
+	}
+
+	@Override
+	public UserRole addUsuario(UserRoleModel userRoleModel) {
+		UserRole user = model2entity(userRoleModel);
+		return userJpaRepository.save(user);
 	}
 
 }
